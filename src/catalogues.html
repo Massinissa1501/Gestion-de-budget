@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Familial - Catalogue</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Budget Familial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Tableau de Bord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="budgets.html"><i class="bi bi-wallet2"></i> Budgets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="depenses.html"><i class="bi bi-cash-coin"></i> Dépenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="analyses.html"><i class="bi bi-graph-up"></i> Analyses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html"><i class="bi bi-cart3"></i> Liste de Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="magasins.html"><i class="bi bi-shop"></i> Magasins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="catalogues.html"><i class="bi bi-book"></i> Catalogues</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> Famille C
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Paramètres</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-people"></i> Gestion Familiale</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise"></i> Vérifier les mises à jour</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Catalogues Promotionnels</h2>
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Catalogues Récents</span>
+                        <div>
+                            <button class="btn btn-sm btn-outline-primary me-2" id="btnImportCatalogue">
+                                <i class="bi bi-upload"></i> Importer un catalogue
+                            </button>
+                            <button class="btn btn-sm btn-primary" id="btnScanCatalogue">
+                                <i class="bi bi-camera"></i> Scanner un catalogue
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <img src="https://via.placeholder.com/300x150?text=Catalogue+Carrefour" class="card-img-top" alt="Catalogue Carrefour">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Carrefour</h5>
+                                        <p class="card-text">Promotions du 15 au 30 mars 2025</p>
+                                        <div class="d-flex justify-content-between">
+                                            <button class="btn btn-sm btn-outline-primary">Voir</button>
+                                            <span class="badge bg-success">28 produits intéressants</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <img src="https://via.placeholder.com/300x150?text=Catalogue+Intermarché" class="card-img-top" alt="Catalogue Intermarché">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Intermarché</h5>
+                                        <p class="card-text">Promotions du 10 au 25 mars 2025</p>
+                                        <div class="d-flex justify-content-between">
+                                            <button class="btn btn-sm btn-outline-primary">Voir</button>
+                                            <span class="badge bg-success">15 produits intéressants</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <img src="https://via.placeholder.com/300x150?text=Catalogue+Leclerc" class="card-img-top" alt="Catalogue Leclerc">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Leclerc</h5>
+                                        <p class="card-text">Promotions du 20 au 31 mars 2025</p>
+                                        <div class="d-flex justify-content-between">
+                                            <button class="btn btn-sm btn-outline-primary">Voir</button>
+                                            <span class="badge bg-success">22 produits intéressants</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 border-dashed d-flex justify-content-center align-items-center" style="min-height: 250px; border-style: dashed; border-width: 2px;">
+                                    <div class="text-center p-4">
+                                        <i class="bi bi-plus-circle" style="font-size: 3rem;"></i>
+                                        <h5 class="mt-3">Ajouter un catalogue</h5>
+                                        <p class="text-muted">Importez ou scannez un nouveau catalogue</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Analyse des Prix
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="productSearch" class="form-label">Rechercher un produit</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="productSearch" placeholder="Ex: Lait, Pain, Yaourts...">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i> Rechercher
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Produit</th>
+                                        <th>Carrefour</th>
+                                        <th>Intermarché</th>
+                                        <th>Leclerc</th>
+                                        <th>Meilleur prix</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Lait demi-écrémé (1L)</td>
+                                        <td>0.95€</td>
+                                        <td>0.99€</td>
+                                        <td class="table-success">0.89€</td>
+                                        <td>Leclerc</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pain de mie complet</td>
+                                        <td class="table-success">1.45€</td>
+                                        <td>1.65€</td>
+                                        <td>1.59€</td>
+                                        <td>Carrefour</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yaourts nature (x8)</td>
+                                        <td>2.35€</td>
+                                        <td class="table-success">1.99€</td>
+                                        <td>2.15€</td>
+                                        <td>Intermarché</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pâtes (500g)</td>
+                                        <td>0.95€</td>
+                                        <td>0.89€</td>
+                                        <td class="table-success">0.85€</td>
+                                        <td>Leclerc</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Café moulu (250g)</td>
+                                        <td class="table-success">2.75€</td>
+                                        <td>3.15€</td>
+                                        <td>2.99€</td>
+                                        <td>Carrefour</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Économies Potentielles
+                    </div>
+                    <div class="card-body">
+                        <canvas id="savingsChart" height="200"></canvas>
+                        <div class="mt-3 text-center">
+                            <h4>45€ d'économies possibles</h4>
+                            <p class="text-muted">En optimisant vos achats ce mois-ci</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Recommandations
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="bi bi-lightbulb text-warning"></i> Achetez vos produits laitiers chez Leclerc cette semaine (promotions -20%)
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-lightbulb text-warning"></i> Les fruits et légumes sont moins chers chez Intermarché en ce moment
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-lightbulb text-warning"></i> Carrefour propose une offre 2+1 sur les produits d'entretien
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Historique des Prix
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="productHistory" class="form-label">Sélectionnez un produit</label>
+                            <select class="form-select" id="productHistory">
+                                <option>Lait demi-écrémé (1L)</option>
+                                <option>Pain de mie complet</option>
+                                <option>Yaourts nature (x8)</option>
+                                <option>Pâtes (500g)</option>
+                                <option>Café moulu (250g)</option>
+                            </select>
+                        </div>
+                        <canvas id="priceHistoryChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour l'import de catalogue -->
+    <div class="modal fade" id="importCatalogueModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Importer un Catalogue</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="catalogueFile" class="form-label">Fichier PDF ou Image</label>
+                        <input class="form-control" type="file" id="catalogueFile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="catalogueMagasin" class="form-label">Magasin</label>
+                        <select class="form-select" id="catalogueMagasin">
+                            <option>Carrefour</option>
+                            <option>Intermarché</option>
+                            <option>Leclerc</option>
+                            <option>Auchan</option>
+                            <option>Lidl</option>
+                            <option>Autre...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="catalogueDates" class="form-label">Période de validité</label>
+                        <input type="text" class="form-control" id="catalogueDates" placeholder="Ex: 15/03/2025 - 30/03/2025">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Importer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour le scan de catalogue -->
+    <div class="modal fade" id="scanCatalogueModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Scanner un Catalogue</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-3">
+                        <div class="camera-placeholder" style="width: 100%; height: 300px; background-color: #f8f9fa; border-radius: 5px; display: flex; justify-content: center; align-items: center;">
+                            <i class="bi bi-camera" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary">
+                            <i class="bi bi-camera"></i> Prendre une photo
+                        </button>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="multiplePages" checked>
+                            <label class="form-check-label" for="multiplePages">
+                                Catalogue multi-pages (prendre plusieurs photos)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Terminer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Graphique des économies potentielles
+            const savingsCtx = document.getElementById('savingsChart').getContext('2d');
+            const savingsChart = new Chart(savingsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Économies réalisées', 'Économies potentielles'],
+                    datasets: [{
+                        data: [30, 45],
+                        backgroundColor: [
+                            '#28a745',
+                            '#ffc107'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Graphique de l'historique des prix
+            const priceHistoryCtx = document.getElementById('priceHistoryChart').getContext('2d');
+            const priceHistoryChart = new Chart(priceHistoryCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+                    datasets: [
+                        {
+                            label: 'Carrefour',
+                            data: [0.95, 0.99, 0.95, 0.89, 0.95, 0.95],
+                            borderColor: '#4e73df',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Intermarché',
+                            data: [0.99, 1.05, 0.99, 0.95, 0.99, 0.99],
+                            borderColor: '#1cc88a',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Leclerc',
+                            data: [0.89, 0.95, 0.89, 0.85, 0.89, 0.89],
+                            borderColor: '#f6c23e',
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            tension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 0.8,
+                            max: 1.1
+                        }
+                    }
+                }
+            });
+
+            // Gestion des modals
+            const importCatalogueModal = new bootstrap.Modal(document.getElementById('importCatalogueModal'));
+            const scanCatalogueModal = new bootstrap.Modal(document.getElementById('scanCatalogueModal'));
+
+            document.getElementById('btnImportCatalogue').addEventListener('click', function() {
+                importCatalogueModal.show();
+            });
+
+            document.getElementById('btnScanCatalogue').addEventListener('click', function() {
+                scanCatalogueModal.show();
+            });
+        });
+    </script>
+</body>
+</html>

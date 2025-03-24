@@ -1,0 +1,78 @@
+/* Styles généraux */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* Styles pour la jauge de budget */
+.budget-gauge {
+    margin: 20px 0;
+}
+
+.gauge-container {
+    height: 30px;
+    background-color: #e9ecef;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #28a745 0%, #ffc107 70%, #dc3545 100%);
+    border-radius: 15px;
+    transition: width 0.5s ease-in-out;
+}
+
+.gauge-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gauge-amount {
+    font-weight: bold;
+}
+
+.gauge-percentage {
+    font-weight: bold;
+}
+
+/* Styles pour les cartes */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+
+/* Styles pour les badges */
+.badge {
+    font-weight: 600;
+    padding: 0.5em 0.8em;
+}
+
+/* Styles pour les boutons d'action rapide */
+.btn {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Styles responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .card {
+        margin-bottom: 15px;
+    }
+}

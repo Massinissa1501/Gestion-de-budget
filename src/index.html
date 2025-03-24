@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Familial - Tableau de Bord</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Budget Familial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="bi bi-speedometer2"></i> Tableau de Bord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="budgets.html"><i class="bi bi-wallet2"></i> Budgets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="depenses.html"><i class="bi bi-cash-coin"></i> Dépenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="analyses.html"><i class="bi bi-graph-up"></i> Analyses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html"><i class="bi bi-cart3"></i> Liste de Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scan_tickets.html"><i class="bi bi-camera"></i> Scan Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogues.html"><i class="bi bi-book"></i> Catalogues</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> Famille C
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Paramètres</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-people"></i> Gestion Familiale</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise"></i> Vérifier les mises à jour</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <h2>Tableau de Bord</h2>
+                <p class="text-muted">Bienvenue dans votre application de gestion de budget familial, Famille C</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-calendar3"></i> Mars 2025
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Janvier 2025</a></li>
+                        <li><a class="dropdown-item" href="#">Février 2025</a></li>
+                        <li><a class="dropdown-item active" href="#">Mars 2025</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Personnaliser...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Budget Actuel</span>
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-outline-primary">Semaine</button>
+                            <button type="button" class="btn btn-primary">Mois</button>
+                            <button type="button" class="btn btn-outline-primary">Trimestre</button>
+                            <button type="button" class="btn btn-outline-primary">Année</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="budget-gauge">
+                            <div class="gauge-container">
+                                <div class="gauge-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="gauge-info">
+                                <span class="gauge-amount">1350€ / 1500€</span>
+                                <span class="gauge-percentage">90%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Détails du Budget</h5>
+                                        <table class="table table-sm">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Période</th>
+                                                    <td>01/03/2025 - 31/03/2025</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Budget initial</th>
+                                                    <td>1500€</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Dépensé</th>
+                                                    <td>150€</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Restant</th>
+                                                    <td>1350€</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Projection fin de mois</th>
+                                                    <td>1100€ (73%)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Visualisation Temporelle</h5>
+                                        <canvas id="timelineChart" height="150"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Dépenses Récentes
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Catégorie</th>
+                                                <th>Montant</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>15/03/2025</td>
+                                                <td>Alimentaire</td>
+                                                <td>45.75€</td>
+                                            </tr>
+                                            <tr>
+                                                <td>14/03/2025</td>
+                                                <td>Transport</td>
+                                                <td>22.30€</td>
+                                            </tr>
+                                            <tr>
+                                                <td>12/03/2025</td>
+                                                <td>Loisirs</td>
+                                                <td>35.00€</td>
+                                            </tr>
+                                            <tr>
+                                                <td>10/03/2025</td>
+                                                <td>Alimentaire</td>
+                                                <td>78.50€</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="depenses.html" class="btn btn-sm btn-outline-primary">Voir toutes les dépenses</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Répartition par Catégorie
+                            </div>
+                            <div class="card-body">
+                                <canvas id="categoryChart" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <i class="bi bi-lightbulb"></i> Recommandations IA
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-danger me-3">
+                                        <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Attention aux dépenses alimentaires</h6>
+                                        <p class="mb-1">Vous avez déjà dépensé 75% de votre budget alimentaire mensuel.</p>
+                                        <small class="text-muted">Conseil: Vérifiez les promotions actuelles chez Carrefour.</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-warning me-3">
+                                        <i class="bi bi-lightbulb-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Économie potentielle</h6>
+                                        <p class="mb-1">Vous pourriez économiser 15€ sur vos courses habituelles cette semaine.</p>
+                                        <small class="text-muted"><a href="catalogues.html">Voir les promotions</a></small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-success me-3">
+                                        <i class="bi bi-check-circle-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Bon travail!</h6>
+                                        <p class="mb-1">Vos dépenses de transport sont inférieures de 10% à la moyenne mensuelle.</p>
+                                        <small class="text-muted">Continuez ainsi pour atteindre vos objectifs d'économies.</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Liste de Courses
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="item1">
+                                    <label class="form-check-label" for="item1">
+                                        Lait (2L)
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="item2">
+                                    <label class="form-check-label" for="item2">
+                                        Pain de mie
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="item3">
+                                    <label class="form-check-label" for="item3">
+                                        Yaourts nature (x8)
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="item4">
+                                    <label class="form-check-label" for="item4">
+                                        Pommes (1kg)
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="item5">
+                                    <label class="form-check-label" for="item5">
+                                        Pâtes (500g)
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="courses.html" class="btn btn-sm btn-outline-primary">Gérer ma liste de courses</a>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Promotions à ne pas manquer
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Café moulu</strong>
+                                        <div class="text-muted small">Carrefour - Jusqu'au 20/03</div>
+                                    </div>
+                                    <span class="badge bg-danger">-30%</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Yaourts nature</strong>
+                                        <div class="text-muted small">Intermarché - Jusqu'au 25/03</div>
+                                    </div>
+                                    <span class="badge bg-danger">-25%</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Lessive</strong>
+                                        <div class="text-muted small">Leclerc - Jusqu'au 18/03</div>
+                                    </div>
+                                    <span class="badge bg-danger">-40%</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="catalogues.html" class="btn btn-sm btn-outline-primary">Voir tous les catalogues</a>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Actions Rapides
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="scan_tickets.html" class="btn btn-outline-primary">
+                                <i class="bi bi-camera"></i> Scanner un ticket
+                            </a>
+                            <a href="depenses.html" class="btn btn-outline-primary">
+                                <i class="bi bi-plus-circle"></i> Ajouter une dépense
+                            </a>
+                            <a href="analyses.html" class="btn btn-outline-primary">
+                                <i class="bi bi-graph-up"></i> Voir les analyses
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Graphique d'évolution temporelle
+            const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+            const timelineChart = new Chart(timelineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4'],
+                    datasets: [{
+                        label: 'Budget restant',
+                        data: [1500, 1425, 1375, 1350],
+                        borderColor: '#4e73df',
+                        backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 1300,
+                            max: 1550
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Graphique des dépenses par catégorie
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            const categoryChart = new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Alimentaire', 'Transport', 'Loisirs', 'Logement', 'Autres'],
+                    datasets: [{
+                        data: [45, 15, 10, 20, 10],
+                        backgroundColor: [
+                            '#4e73df',
+                            '#1cc88a',
+                            '#f6c23e',
+                            '#e74a3b',
+                            '#36b9cc'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

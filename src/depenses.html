@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Familial - Dépenses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Budget Familial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Tableau de Bord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="budgets.html"><i class="bi bi-wallet2"></i> Budgets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="depenses.html"><i class="bi bi-cash-coin"></i> Dépenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="analyses.html"><i class="bi bi-graph-up"></i> Analyses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html"><i class="bi bi-cart3"></i> Liste de Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scan_tickets.html"><i class="bi bi-camera"></i> Scan Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogues.html"><i class="bi bi-book"></i> Catalogues</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> Famille C
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Paramètres</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-people"></i> Gestion Familiale</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise"></i> Vérifier les mises à jour</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <h2>Gestion des Dépenses</h2>
+            </div>
+            <div class="col-md-4 text-end">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExpenseModal">
+                    <i class="bi bi-plus-circle"></i> Nouvelle Dépense
+                </button>
+                <div class="btn-group ms-2">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-calendar3"></i> Mars 2025
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Janvier 2025</a></li>
+                        <li><a class="dropdown-item" href="#">Février 2025</a></li>
+                        <li><a class="dropdown-item active" href="#">Mars 2025</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Personnaliser...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Liste des dépenses</span>
+                        <div class="input-group input-group-sm" style="width: 250px;">
+                            <input type="text" class="form-control" placeholder="Rechercher...">
+                            <button class="btn btn-outline-secondary" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Catégorie</th>
+                                        <th>Description</th>
+                                        <th>Montant</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15/03/2025</td>
+                                        <td>Alimentaire</td>
+                                        <td>Courses Carrefour</td>
+                                        <td>45.75€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>14/03/2025</td>
+                                        <td>Transport</td>
+                                        <td>Essence</td>
+                                        <td>22.30€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>12/03/2025</td>
+                                        <td>Loisirs</td>
+                                        <td>Cinéma</td>
+                                        <td>35.00€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>10/03/2025</td>
+                                        <td>Alimentaire</td>
+                                        <td>Courses Intermarché</td>
+                                        <td>78.50€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>08/03/2025</td>
+                                        <td>Logement</td>
+                                        <td>Électricité</td>
+                                        <td>65.20€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>05/03/2025</td>
+                                        <td>Santé</td>
+                                        <td>Pharmacie</td>
+                                        <td>18.90€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>03/03/2025</td>
+                                        <td>Alimentaire</td>
+                                        <td>Boulangerie</td>
+                                        <td>8.75€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>01/03/2025</td>
+                                        <td>Abonnements</td>
+                                        <td>Netflix</td>
+                                        <td>13.99€</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-info">
+                                                    <i class="bi bi-info-circle"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <div>
+                            <span>Affichage 1-8 sur 24 dépenses</span>
+                        </div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Dépenses récurrentes
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Catégorie</th>
+                                        <th>Montant</th>
+                                        <th>Fréquence</th>
+                                        <th>Prochaine date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Loyer</td>
+                                        <td>Logement</td>
+                                        <td>750.00€</td>
+                                        <td>Mensuelle</td>
+                                        <td>01/04/2025</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Netflix</td>
+                                        <td>Abonnements</td>
+                                        <td>13.99€</td>
+                                        <td>Mensuelle</td>
+                                        <td>01/04/2025</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Forfait mobile</td>
+                                        <td>Télécommunications</td>
+                                        <td>19.99€</td>
+                                        <td>Mensuelle</td>
+                                        <td>15/04/2025</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Assurance habitation</td>
+                                        <td>Assurances</td>
+                                        <td>25.50€</td>
+                                        <td>Mensuelle</td>
+                                        <td>05/04/2025</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addRecurringModal">
+                            <i class="bi bi-plus-circle"></i> Ajouter une dépense récurrente
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <i class="bi bi-lightbulb"></i> Recommandations IA
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-warning me-3">
+                                        <i class="bi bi-graph-up-arrow fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Tendance détectée</h6>
+                                        <p class="mb-1">Vos dépenses alimentaires ont augmenté de 15% ce mois-ci.</p>
+                                        <small class="text-muted">Consultez l'analyse détaillée pour comprendre pourquoi.</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-success me-3">
+                                        <i class="bi bi-lightbulb-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Économie potentielle</h6>
+                                        <p class="mb-1">Vous pourriez économiser 9.99€/mois en changeant de forfait mobile.</p>
+                                        <small class="text-muted">Offres similaires détectées à partir de 9.99€/mois.</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-danger me-3">
+                                        <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Achat impulsif détecté</h6>
+                                        <p class="mb-1">Plusieurs achats non planifiés dans la catégorie "Loisirs".</p>
+                                        <small class="text-muted">Définir un budget spécifique pourrait vous aider.</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Résumé du mois
+                    </div>
+                    <div class="card-body">
+                        <canvas id="categoryPieChart" height="200"></canvas>
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Alimentaire</span>
+                                <span>133.00€ (35%)</span>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 35%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Logement</span>
+                                <span>65.20€ (17%)</span>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 17%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Transport</span>
+                                <span>22.30€ (6%)</span>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 6%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Loisirs</span>
+                                <span>35.00€ (9%)</span>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 9%"></div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Autres</span>
+                                <span>32.89€ (9%)</span>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 9%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="analyses.html" class="btn btn-sm btn-outline-primary">Voir l'analyse détaillée</a>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Gestion des catégories
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Alimentaire</span>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ms-3 small">
+                                <div class="mb-1">- Courses</div>
+                                <div class="mb-1">- Restaurants</div>
+                                <div class="mb-1">- Produits frais</div>
+                                <div class="mb-1">- Boulangerie</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>Transport</span>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="ms-3 small">
+                                <div class="mb-1">- Essence</div>
+                                <div class="mb-1">- Transports en commun</div>
+                                <div class="mb-1">- Entretien véhicule</div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                                <i class="bi bi-plus-circle"></i> Ajouter une catégorie
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Actions Rapides
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="scan_tickets.html" class="btn btn-outline-primary">
+                                <i class="bi bi-camera"></i> Scanner un ticket
+                            </a>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#importExpensesModal">
+                                <i class="bi bi-upload"></i> Importer des dépenses
+                            </button>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exportExpensesModal">
+                                <i class="bi bi-download"></i> Exporter des dépenses
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter une dépense -->
+    <div class="modal fade" id="addExpenseModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter une dépense</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="expenseDate" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="expenseDate" value="2025-03-24">
+                        </div>
+                        <div class="mb-3">
+                            <label for="expenseCategory" class="form-label">Catégorie</label>
+                            <select class="form-select" id="expenseCategory">
+                                <option>Alimentaire</option>
+                                <option>Transport</option>
+                                <option>Logement</option>
+                                <option>Loisirs</option>
+                                <option>Santé</option>
+                                <option>Abonnements</option>
+                                <option>Autres</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expenseSubcategory" class="form-label">Sous-catégorie</label>
+                            <select class="form-select" id="expenseSubcategory">
+                                <option>Courses</option>
+                                <option>Restaurants</option>
+                                <option>Produits frais</option>
+                                <option>Boulangerie</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expenseDescription" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="expenseDescription" placeholder="Ex: Courses Carrefour">
+                        </div>
+                        <div class="mb-3">
+                            <label for="expenseAmount" class="form-label">Montant</label>
+                            <div class="input-group">
+                                <input type="number" step="0.01" class="form-control" id="expenseAmount" placeholder="0.00">
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expensePaymentMethod" class="form-label">Moyen de paiement</label>
+                            <select class="form-select" id="expensePaymentMethod">
+                                <option>Carte bancaire</option>
+                                <option>Espèces</option>
+                                <option>Virement</option>
+                                <option>Chèque</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="expenseRecurring">
+                            <label class="form-check-label" for="expenseRecurring">Dépense récurrente</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expenseNote" class="form-label">Note (optionnel)</label>
+                            <textarea class="form-control" id="expenseNote" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expenseAttachment" class="form-label">Pièce jointe (optionnel)</label>
+                            <input class="form-control" type="file" id="expenseAttachment">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter une dépense récurrente -->
+    <div class="modal fade" id="addRecurringModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter une dépense récurrente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recurringDescription" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="recurringDescription" placeholder="Ex: Abonnement gym">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recurringCategory" class="form-label">Catégorie</label>
+                            <select class="form-select" id="recurringCategory">
+                                <option>Alimentaire</option>
+                                <option>Transport</option>
+                                <option>Logement</option>
+                                <option>Loisirs</option>
+                                <option>Santé</option>
+                                <option selected>Abonnements</option>
+                                <option>Autres</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recurringAmount" class="form-label">Montant</label>
+                            <div class="input-group">
+                                <input type="number" step="0.01" class="form-control" id="recurringAmount" placeholder="0.00">
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recurringFrequency" class="form-label">Fréquence</label>
+                            <select class="form-select" id="recurringFrequency">
+                                <option selected>Mensuelle</option>
+                                <option>Hebdomadaire</option>
+                                <option>Trimestrielle</option>
+                                <option>Annuelle</option>
+                                <option>Personnalisée</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recurringStartDate" class="form-label">Date de début</label>
+                            <input type="date" class="form-control" id="recurringStartDate" value="2025-04-01">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recurringEndDate" class="form-label">Date de fin (optionnel)</label>
+                            <input type="date" class="form-control" id="recurringEndDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recurringNote" class="form-label">Note (optionnel)</label>
+                            <textarea class="form-control" id="recurringNote" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter une catégorie -->
+    <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajouter une catégorie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="categoryName" class="form-label">Nom de la catégorie</label>
+                            <input type="text" class="form-control" id="categoryName" placeholder="Ex: Éducation">
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoryIcon" class="form-label">Icône</label>
+                            <select class="form-select" id="categoryIcon">
+                                <option value="bi-book">📚 Livre</option>
+                                <option value="bi-cart">🛒 Panier</option>
+                                <option value="bi-house">🏠 Maison</option>
+                                <option value="bi-car-front">🚗 Voiture</option>
+                                <option value="bi-heart">❤️ Cœur</option>
+                                <option value="bi-gift">🎁 Cadeau</option>
+                                <option value="bi-plus">➕ Autre</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoryColor" class="form-label">Couleur</label>
+                            <input type="color" class="form-control form-control-color" id="categoryColor" value="#4e73df">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Sous-catégories</label>
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control" placeholder="Nouvelle sous-catégorie">
+                                <button class="btn btn-outline-secondary" type="button">Ajouter</button>
+                            </div>
+                            <div class="list-group">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Sous-catégorie 1</span>
+                                    <button type="button" class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Sous-catégorie 2</span>
+                                    <button type="button" class="btn btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour importer des dépenses -->
+    <div class="modal fade" id="importExpensesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Importer des dépenses</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="importFormat" class="form-label">Format</label>
+                            <select class="form-select" id="importFormat">
+                                <option selected>CSV</option>
+                                <option>Excel</option>
+                                <option>QIF</option>
+                                <option>OFX</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="importFile" class="form-label">Fichier</label>
+                            <input class="form-control" type="file" id="importFile">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="importOverwrite">
+                            <label class="form-check-label" for="importOverwrite">Écraser les dépenses existantes</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="importCategories" checked>
+                            <label class="form-check-label" for="importCategories">Associer automatiquement les catégories</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Importer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour exporter des dépenses -->
+    <div class="modal fade" id="exportExpensesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Exporter des dépenses</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exportFormat" class="form-label">Format</label>
+                            <select class="form-select" id="exportFormat">
+                                <option selected>CSV</option>
+                                <option>Excel</option>
+                                <option>PDF</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exportPeriod" class="form-label">Période</label>
+                            <select class="form-select" id="exportPeriod">
+                                <option selected>Mois en cours</option>
+                                <option>Mois précédent</option>
+                                <option>Année en cours</option>
+                                <option>Personnalisée</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exportCategories" class="form-label">Catégories</label>
+                            <select class="form-select" id="exportCategories" multiple>
+                                <option selected>Toutes les catégories</option>
+                                <option>Alimentaire</option>
+                                <option>Transport</option>
+                                <option>Logement</option>
+                                <option>Loisirs</option>
+                                <option>Santé</option>
+                                <option>Abonnements</option>
+                                <option>Autres</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exportDetails" checked>
+                            <label class="form-check-label" for="exportDetails">Inclure les détails</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Exporter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Graphique des dépenses par catégorie
+            const categoryCtx = document.getElementById('categoryPieChart').getContext('2d');
+            const categoryChart = new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Alimentaire', 'Logement', 'Transport', 'Loisirs', 'Autres'],
+                    datasets: [{
+                        data: [35, 17, 6, 9, 33],
+                        backgroundColor: [
+                            '#4e73df',
+                            '#1cc88a',
+                            '#f6c23e',
+                            '#e74a3b',
+                            '#36b9cc'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Familial - Liste de Courses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Budget Familial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Tableau de Bord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="budgets.html"><i class="bi bi-wallet2"></i> Budgets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="depenses.html"><i class="bi bi-cash-coin"></i> Dépenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="analyses.html"><i class="bi bi-graph-up"></i> Analyses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="courses.html"><i class="bi bi-cart3"></i> Liste de Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="scan_tickets.html"><i class="bi bi-camera"></i> Scan Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogues.html"><i class="bi bi-book"></i> Catalogues</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> Famille C
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Paramètres</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-people"></i> Gestion Familiale</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise"></i> Vérifier les mises à jour</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <h2>Liste de Courses Intelligente</h2>
+            </div>
+            <div class="col-md-4 text-end">
+                <button class="btn btn-primary" id="btnNewList">
+                    <i class="bi bi-plus-circle"></i> Nouvelle Liste
+                </button>
+                <div class="btn-group ms-2">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-shop"></i> Magasin
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item active" href="#">Tous les magasins</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Carrefour</a></li>
+                        <li><a class="dropdown-item" href="#">Intermarché</a></li>
+                        <li><a class="dropdown-item" href="#">Leclerc</a></li>
+                        <li><a class="dropdown-item" href="#">Autre...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Liste de courses actuelle</span>
+                        <div>
+                            <button class="btn btn-sm btn-outline-primary me-2" id="btnOptimize">
+                                <i class="bi bi-magic"></i> Optimiser
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary me-2" id="btnShare">
+                                <i class="bi bi-share"></i> Partager
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary" id="btnPrint">
+                                <i class="bi bi-printer"></i> Imprimer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Ajouter un produit..." id="newItemInput">
+                                <button class="btn btn-primary" type="button" id="btnAddItem">Ajouter</button>
+                            </div>
+                        </div>
+
+                        <div class="shopping-list">
+                            <h5>Produits laitiers</h5>
+                            <div class="list-group mb-3">
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item1">
+                                        <label class="form-check-label" for="item1">
+                                            Lait demi-écrémé (2L)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success me-2">Promo -15%</span>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item2">
+                                        <label class="form-check-label" for="item2">
+                                            Yaourts nature (x8)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-warning me-2">Achat récent</span>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item3">
+                                        <label class="form-check-label" for="item3">
+                                            Fromage râpé (200g)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5>Fruits et légumes</h5>
+                            <div class="list-group mb-3">
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item4">
+                                        <label class="form-check-label" for="item4">
+                                            Pommes (1kg)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success me-2">Promo -20%</span>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item5">
+                                        <label class="form-check-label" for="item5">
+                                            Carottes (500g)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5>Épicerie</h5>
+                            <div class="list-group mb-3">
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item6">
+                                        <label class="form-check-label" for="item6">
+                                            Pâtes (500g)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item7">
+                                        <label class="form-check-label" for="item7">
+                                            Café moulu (250g)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success me-2">Promo -30%</span>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="item8">
+                                        <label class="form-check-label" for="item8">
+                                            Huile d'olive (75cl)
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <button class="btn btn-outline-primary">
+                                <i class="bi bi-plus-circle"></i> Ajouter une catégorie
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>Total estimé:</strong> 35.75€
+                        </div>
+                        <div>
+                            <span class="badge bg-success">Économies: 5.20€</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Suggestions basées sur vos habitudes
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        Pain de mie
+                                        <span class="badge bg-primary rounded-pill">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        Beurre (250g)
+                                        <span class="badge bg-primary rounded-pill">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        Jus d'orange (1L)
+                                        <span class="badge bg-primary rounded-pill">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        Bananes (1kg)
+                                        <span class="badge bg-primary rounded-pill">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        Papier toilette
+                                        <span class="badge bg-primary rounded-pill">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                        Lessive
+                                        <span class="badge bg-primary rounded-pill">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <i class="bi bi-lightbulb"></i> Recommandations IA
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-warning me-3">
+                                        <i class="bi bi-exclamation-circle-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Achat potentiellement redondant</h6>
+                                        <p class="mb-1">Vous avez acheté des yaourts nature il y a 3 jours.</p>
+                                        <small class="text-muted">Voulez-vous quand même les garder dans votre liste ?</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-success me-3">
+                                        <i class="bi bi-lightbulb-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Économie potentielle</h6>
+                                        <p class="mb-1">Le café est 30% moins cher chez Carrefour cette semaine.</p>
+                                        <small class="text-muted">Économie estimée: 2.10€</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-info me-3">
+                                        <i class="bi bi-basket-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Suggestion de menu</h6>
+                                        <p class="mb-1">Avec les produits de votre liste, vous pourriez préparer des pâtes à la carbonara.</p>
+                                        <small class="text-muted"><a href="#">Voir la recette</a></small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Optimisation des achats
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="optimizeStore" class="form-label">Magasin préféré</label>
+                            <select class="form-select" id="optimizeStore">
+                                <option>Carrefour</option>
+                                <option>Intermarché</option>
+                                <option>Leclerc</option>
+                                <option>Auchan</option>
+                                <option selected>Le moins cher</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="optimizeCriteria" class="form-label">Critère d'optimisation</label>
+                            <select class="form-select" id="optimizeCriteria">
+                                <option selected>Prix</option>
+                                <option>Distance</option>
+                                <option>Qualité</option>
+                                <option>Équilibre</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="optimizePromo" checked>
+                            <label class="form-check-label" for="optimizePromo">Inclure les promotions</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="optimizeLocal">
+                            <label class="form-check-label" for="optimizeLocal">Privilégier les produits locaux</label>
+                        </div>
+                        <button class="btn btn-primary w-100" id="btnOptimizeList">
+                            Optimiser ma liste
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Historique des listes
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Courses hebdomadaires</strong>
+                                        <div class="text-muted small">15/03/2025 - 8 produits</div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-arrow-clockwise"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Courses du weekend</strong>
+                                        <div class="text-muted small">08/03/2025 - 12 produits</div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-arrow-clockwise"></i>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Produits d'entretien</strong>
+                                        <div class="text-muted small">01/03/2025 - 5 produits</div>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-arrow-clockwise"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Cartes de fidélité
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4 mb-3 text-center">
+                                <div class="card">
+                                    <div class="card-body p-2">
+                                        <i class="bi bi-credit-card fs-1 text-primary"></i>
+                                        <div class="small mt-1">Carrefour</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 mb-3 text-center">
+                                <div class="card">
+                                    <div class="card-body p-2">
+                                        <i class="bi bi-credit-card fs-1 text-success"></i>
+                                        <div class="small mt-1">Leclerc</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 mb-3 text-center">
+                                <div class="card">
+                                    <div class="card-body p-2">
+                                        <i class="bi bi-credit-card fs-1 text-danger"></i>
+                                        <div class="small mt-1">Auchan</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary btn-sm w-100">
+                            <i class="bi bi-plus-circle"></i> Ajouter une carte
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour nouvelle liste -->
+    <div class="modal fade" id="newListModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Créer une nouvelle liste</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="listName" class="form-label">Nom de la liste</label>
+                            <input type="text" class="form-control" id="listName" placeholder="Ex: Courses hebdomadaires">
+                        </div>
+                        <div class="mb-3">
+                            <label for="listStore" class="form-label">Magasin principal</label>
+                            <select class="form-select" id="listStore">
+                                <option selected>Tous les magasins</option>
+                                <option>Carrefour</option>
+                                <option>Intermarché</option>
+                                <option>Leclerc</option>
+                                <option>Autre...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Type de liste</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="listType" id="listTypeNew" checked>
+                                <label class="form-check-label" for="listTypeNew">
+                                    Liste vide
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="listType" id="listTypeTemplate">
+                                <label class="form-check-label" for="listTypeTemplate">
+                                    Utiliser un modèle
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="listType" id="listTypeAI">
+                                <label class="form-check-label" for="listTypeAI">
+                                    Générer avec l'IA (basé sur vos habitudes)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="listBudget" class="form-label">Budget estimé (optionnel)</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="listBudget" placeholder="0.00">
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary">Créer la liste</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal pour nouvelle liste
+            const newListModal = new bootstrap.Modal(document.getElementById('newListModal'));
+            
+            document.getElementById('btnNewList').addEventListener('click', function() {
+                newListModal.show();
+            });
+            
+            // Ajouter un nouvel élément
+            document.getElementById('btnAddItem').addEventListener('click', function() {
+                const input = document.getElementById('newItemInput');
+                if (input.value.trim() !== '') {
+                    alert('Produit "' + input.value + '" ajouté à la liste.');
+                    input.value = '';
+                }
+            });
+            
+            // Optimiser la liste
+            document.getElementById('btnOptimize').addEventListener('click', function() {
+                alert('Optimisation de la liste en cours...');
+            });
+            
+            document.getElementById('btnOptimizeList').addEventListener('click', function() {
+                alert('Optimisation de la liste en cours...');
+            });
+            
+            // Partager la liste
+            document.getElementById('btnShare').addEventListener('click', function() {
+                alert('Fonctionnalité de partage de liste');
+            });
+            
+            // Imprimer la liste
+            document.getElementById('btnPrint').addEventListener('click', function() {
+                alert('Préparation de l\'impression de la liste...');
+            });
+        });
+    </script>
+</body>
+</html>

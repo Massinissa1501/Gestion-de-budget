@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Familial - Analyses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Budget Familial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Tableau de Bord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="budgets.html"><i class="bi bi-wallet2"></i> Budgets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="depenses.html"><i class="bi bi-cash-coin"></i> Dépenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="analyses.html"><i class="bi bi-graph-up"></i> Analyses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html"><i class="bi bi-cart3"></i> Liste de Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="magasins.html"><i class="bi bi-shop"></i> Magasins</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogues.html"><i class="bi bi-book"></i> Catalogues</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> Famille C
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Paramètres</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-people"></i> Gestion Familiale</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise"></i> Vérifier les mises à jour</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <h2>Analyses et Rapports</h2>
+            </div>
+            <div class="col-md-4 text-end">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-calendar3"></i> Mars 2025
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Janvier 2025</a></li>
+                        <li><a class="dropdown-item" href="#">Février 2025</a></li>
+                        <li><a class="dropdown-item active" href="#">Mars 2025</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Personnaliser...</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group ms-2">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-arrow-left-right"></i> Comparer
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Avec le mois précédent</a></li>
+                        <li><a class="dropdown-item" href="#">Avec le même mois l'an dernier</a></li>
+                        <li><a class="dropdown-item" href="#">Avec la moyenne annuelle</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Personnaliser...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Visualisation Temporelle</span>
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-outline-primary">Jour</button>
+                            <button type="button" class="btn btn-outline-primary">Semaine</button>
+                            <button type="button" class="btn btn-primary">Mois</button>
+                            <button type="button" class="btn btn-outline-primary">Année</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="timelineChart" height="250"></canvas>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Dépenses par Catégorie
+                            </div>
+                            <div class="card-body">
+                                <canvas id="categoryChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Dépenses par Magasin
+                            </div>
+                            <div class="card-body">
+                                <canvas id="storeChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Comparaison avec la Période Précédente
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Catégorie</th>
+                                        <th>Ce mois</th>
+                                        <th>Mois dernier</th>
+                                        <th>Variation</th>
+                                        <th>Tendance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Alimentaire</td>
+                                        <td>675€</td>
+                                        <td>580€</td>
+                                        <td class="text-danger">+16%</td>
+                                        <td><i class="bi bi-arrow-up-right text-danger"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Transport</td>
+                                        <td>300€</td>
+                                        <td>320€</td>
+                                        <td class="text-success">-6%</td>
+                                        <td><i class="bi bi-arrow-down-right text-success"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loisirs</td>
+                                        <td>225€</td>
+                                        <td>210€</td>
+                                        <td class="text-danger">+7%</td>
+                                        <td><i class="bi bi-arrow-up-right text-danger"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Logement</td>
+                                        <td>300€</td>
+                                        <td>300€</td>
+                                        <td>0%</td>
+                                        <td><i class="bi bi-dash"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Autres</td>
+                                        <td>300€</td>
+                                        <td>340€</td>
+                                        <td class="text-success">-12%</td>
+                                        <td><i class="bi bi-arrow-down-right text-success"></i></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table-light">
+                                        <th>Total</th>
+                                        <th>1800€</th>
+                                        <th>1750€</th>
+                                        <th class="text-danger">+3%</th>
+                                        <th><i class="bi bi-arrow-up-right text-danger"></i></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Tendances et Prévisions
+                    </div>
+                    <div class="card-body">
+                        <canvas id="forecastChart" height="200"></canvas>
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-info-circle"></i> Prévision pour Avril 2025 : <strong>1750€</strong> de dépenses
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Recommandations
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-danger me-3">
+                                        <i class="bi bi-exclamation-triangle-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Dépenses alimentaires en hausse</h6>
+                                        <p class="mb-1">Vos dépenses alimentaires ont augmenté de 16% par rapport au mois dernier.</p>
+                                        <small class="text-muted">Conseil: Vérifiez les promotions actuelles chez Carrefour et Intermarché.</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-success me-3">
+                                        <i class="bi bi-check-circle-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Bon travail sur les transports</h6>
+                                        <p class="mb-1">Vous avez réduit vos dépenses de transport de 6% ce mois-ci.</p>
+                                        <small class="text-muted">Continuez ainsi pour atteindre vos objectifs d'économies.</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0 text-warning me-3">
+                                        <i class="bi bi-lightbulb-fill fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Optimisation possible</h6>
+                                        <p class="mb-1">Vous pourriez économiser environ 45€ par mois en regroupant vos achats chez Leclerc.</p>
+                                        <small class="text-muted">Voir l'analyse détaillée dans l'onglet Catalogues.</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Analyse Détaillée
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="analysisCategory" class="form-label">Catégorie</label>
+                            <select class="form-select" id="analysisCategory">
+                                <option selected>Alimentaire</option>
+                                <option>Transport</option>
+                                <option>Loisirs</option>
+                                <option>Logement</option>
+                                <option>Autres</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="analysisPeriod" class="form-label">Période</label>
+                            <select class="form-select" id="analysisPeriod">
+                                <option>Dernière semaine</option>
+                                <option selected>Dernier mois</option>
+                                <option>Dernier trimestre</option>
+                                <option>Dernière année</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary w-100" id="btnGenerateAnalysis">
+                            Générer l'analyse
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Exporter les Rapports
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary">
+                                <i class="bi bi-file-earmark-pdf"></i> Exporter en PDF
+                            </button>
+                            <button class="btn btn-outline-primary">
+                                <i class="bi bi-file-earmark-excel"></i> Exporter en Excel
+                            </button>
+                            <button class="btn btn-outline-primary">
+                                <i class="bi bi-envelope"></i> Envoyer par email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour l'analyse détaillée -->
+    <div class="modal fade" id="detailedAnalysisModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Analyse Détaillée - Alimentaire</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6>Répartition des Dépenses</h6>
+                            <canvas id="detailedCategoryChart" height="200"></canvas>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Évolution sur 6 Mois</h6>
+                            <canvas id="detailedTimelineChart" height="200"></canvas>
+                        </div>
+                    </div>
+                    
+                    <h6>Top Produits</h6>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Quantité</th>
+                                    <th>Dépense Totale</th>
+                                    <th>Prix Moyen</th>
+                                    <th>Fréquence d'Achat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lait demi-écrémé</td>
+                                    <td>12L</td>
+                                    <td>11.40€</td>
+                                    <td>0.95€/L</td>
+                                    <td>3 fois/mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Pain de mie</td>
+                                    <td>8 paquets</td>
+                                    <td>11.60€</td>
+                                    <td>1.45€/paquet</td>
+                                    <td>2 fois/mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Yaourts nature</td>
+                                    <td>10 packs</td>
+                                    <td>23.50€</td>
+                                    <td>2.35€/pack</td>
+                                    <td>2-3 fois/mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Pâtes</td>
+                                    <td>6 paquets</td>
+                                    <td>5.70€</td>
+                                    <td>0.95€/paquet</td>
+                                    <td>1-2 fois/mois</td>
+                                </tr>
+                                <tr>
+                                    <td>Café moulu</td>
+                                    <td>4 paquets</td>
+                                    <td>11.00€</td>
+                                    <td>2.75€/paquet</td>
+                                    <td>1 fois/mois</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h6>Opportunités d'Économies</h6>
+                    <div class="alert alert-info">
+                        <ul class="mb-0">
+                            <li>Acheter le lait chez Leclerc pourrait vous faire économiser 0.72€/mois (0.06€/L)</li>
+                            <li>Les yaourts sont 15% moins chers chez Intermarché (économie potentielle: 3.50€/mois)</li>
+                            <li>Acheter les pâtes en lot de 5kg vous ferait économiser 20% (économie potentielle: 1.14€/mois)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary">Exporter cette analyse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Graphique d'évolution temporelle
+            const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+            const timelineChart = new Chart(timelineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+                    datasets: [
+                        {
+                            label: 'Dépenses',
+                            data: [1420, 1480, 1350, null, null, null],
+                            borderColor: '#4e73df',
+                            backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Prévisions',
+                            data: [null, null, 1350, 1750, 1650, 1700],
+                            borderColor: '#1cc88a',
+                            backgroundColor: 'rgba(28, 200, 138, 0.1)',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            fill: true,
+                            tension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 1000,
+                            max: 2000
+                        }
+                    }
+                }
+            });
+
+            // Graphique des dépenses par catégorie
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            const categoryChart = new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Alimentaire', 'Transport', 'Loisirs', 'Logement', 'Autres'],
+                    datasets: [{
+                        data: [675, 300, 225, 300, 300],
+                        backgroundColor: [
+                            '#4e73df',
+                            '#1cc88a',
+                            '#f6c23e',
+                            '#e74a3b',
+                            '#36b9cc'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Graphique des dépenses par magasin
+            const storeCtx = document.getElementById('storeChart').getContext('2d');
+            const storeChart = new Chart(storeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Carrefour', 'Intermarché', 'Leclerc', 'Boulangerie', 'Autres'],
+                    datasets: [{
+                        data: [450, 350, 250, 150, 600],
+                        backgroundColor: [
+                            '#4e73df',
+                            '#1cc88a',
+                            '#f6c23e',
+                            '#e74a3b',
+                            '#36b9cc'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Graphique des prévisions
+            const forecastCtx = document.getElementById('forecastChart').getContext('2d');
+            const forecastChart = new Chart(forecastCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+                    datasets: [
+                        {
+                            label: 'Réel',
+                            data: [1420, 1480, 1350, null, null, null],
+                            backgroundColor: '#4e73df',
+                            borderWidth: 0
+                        },
+                        {
+                            label: 'Prévision',
+                            data: [null, null, null, 1750, 1650, 1700],
+                            backgroundColor: 'rgba(28, 200, 138, 0.5)',
+                            borderWidth: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 1000,
+                            max: 2000
+                        }
+                    }
+                }
+            });
+
+            // Modal pour l'analyse détaillée
+            const detailedAnalysisModal = new bootstrap.Modal(document.getElementById('detailedAnalysisModal'));
+            
+            document.getElementById('btnGenerateAnalysis').addEventListener('click', function() {
+                // Graphiques pour l'analyse détaillée
+                const detailedCategoryCtx = document.getElementById('detailedCategoryChart').getContext('2d');
+                const detailedCategoryChart = new Chart(detailedCategoryCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Produits laitiers', 'Boulangerie', 'Fruits et légumes', 'Viandes', 'Boissons', 'Autres'],
+                        datasets: [{
+                            data: [150, 125, 175, 100, 75, 50],
+                            backgroundColor: [
+                                '#4e73df',
+                                '#1cc88a',
+                                '#f6c23e',
+                                '#e74a3b',
+                                '#36b9cc',
+                                '#858796'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+
+                const detailedTimelineCtx = document.getElementById('detailedTimelineChart').getContext('2d');
+                const detailedTimelineChart = new Chart(detailedTimelineCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Oct', 'Nov', 'Déc', 'Jan', 'Fév', 'Mar'],
+                        datasets: [{
+                            label: 'Alimentaire',
+                            data: [550, 600, 650, 580, 580, 675],
+                            borderColor: '#4e73df',
+                            backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 500,
+                                max: 700
+                            }
+                        }
+                    }
+                });
+
+                detailedAnalysisModal.show();
+            });
+        });
+    </script>
+</body>
+</html>
